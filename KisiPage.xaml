@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppH8Rehber.KisiPage"
+             Title="KişiPage">
+    
+    <VerticalStackLayout>
+
+        <Frame>
+            <StackLayout>
+                <Image Source="{Binding Resim}"
+                       WidthRequest="150"
+                       HeightRequest="150"/>
+                <Button Text="Resim Ekle"
+                        Clicked="ResimClicked"/>
+            </StackLayout>
+        </Frame>
+
+        <StackLayout>
+
+            <Label Text="Adı:" />
+            <Entry 
+                Text="{Binding Adı}"
+                Placeholder="Adı"/>
+
+
+            <Label Text="Soyadı:"/>
+            <Entry 
+                Text="{Binding Soyadı}"
+                Placeholder="Soyadı"/>
+
+            <Label Text="Telefon:"/>
+            <Entry 
+                Text="{Binding Telefon}"                
+                Placeholder="Telefon"/>
+
+            <Label Text="Mail:"/>
+            <Entry 
+                Text="{Binding Mail}"                                
+                Placeholder="Mail"/>
+
+            <Label Text="Adres:"/>
+            <Editor 
+                Text="{Binding Adres}"                                                
+                Placeholder="Adres"/>
+
+        </StackLayout>
+
+        <HorizontalStackLayout>
+            <Button Text="Tamam" Clicked="OkClicked"/>
+            <Button Text="İptal" Clicked="CancelClicked"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

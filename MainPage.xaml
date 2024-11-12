@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppH8Rehber.MainPage"
+             Unloaded="SaveData">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Kaydet" Clicked="Kisileri_Kaydet_Click"/>
+        <ToolbarItem Text="Ekle" IconImageSource="add.png" Clicked="Add_Click"/>
+    </ContentPage.ToolbarItems>
+
+
+    <ScrollView>
+        <CollectionView x:Name="lstKisiler">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    IconImageSource="delete.png"
+                                    Clicked="Delete_Click"
+                                    CommandParameter="{Binding Id}"/>
+
+                                <SwipeItem 
+                                    IconImageSource="image.png"
+                                    Text="Resim"
+                                    Clicked="ImageAdd_Click"
+                                    CommandParameter="{Binding Id}"/>
+
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    IconImageSource="edit.png"
+                                    Clicked="Edit_Click"
+                                    CommandParameter="{Binding Id}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+
+                        <Frame BorderColor="Orange">
+
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                          ColumnDefinitions="Auto,*"
+                          ColumnSpacing="10"
+                          RowSpacing="5">
+
+                                <Frame 
+                                BorderColor="Blue"
+                                Margin="0"
+                                Grid.Column="0"
+                               Grid.Row="0"
+                               Grid.RowSpan="3"
+                                   CornerRadius="60">
+                                    <Image
+                                        Scale="2"
+                                        Source="{Binding Resim}"
+                                        WidthRequest="60"/>
+
+                                </Frame>
+
+                                <Label 
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   FontSize="Medium"
+                                   Text="{Binding AdSoyad}"/>
+
+                                <Label 
+                               FontSize="Small"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Telefon}"/>
+
+                                <Label 
+                               FontSize="Small"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               Text="{Binding Mail}"/>
+
+
+                            </Grid>
+
+                            <FlyoutBase.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem 
+                                        Text="Düzenle"
+                                        Clicked="Edit_Click"
+                                        IconImageSource="edit1.png"
+                                        CommandParameter="{Binding ID}"/>
+
+                                    <MenuFlyoutItem 
+                                        Text="Resim Ekle"
+                                        Clicked="ImageAdd_Click"
+                                        CommandParameter="{Binding ID}"/>
+
+
+                                    <MenuFlyoutItem 
+                                        Text="Sil"
+                                        Clicked="Delete_Click"
+                                        IconImageSource="delete.png"
+                                        CommandParameter="{Binding ID}"/>
+                                </MenuFlyout>
+                            </FlyoutBase.ContextFlyout>
+                        </Frame>
+                    </SwipeView>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ScrollView>
+
+</ContentPage>
